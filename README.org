@@ -1,0 +1,92 @@
+#+TITLE: =simple-clock= — a stylable JavaScript clock
+
+This repository provides a clock library, which was designed with emphasis on
+ease of use and styling.
+
+It provides following features:
+- appearance can be customized by changing the style object
+- a logo from an =<img>= element (which might be an SVG image) can be embedded
+- digits can be omitted from the clock, allowing for logos that would go over
+  them otherwise
+- a time offset can be set, for instance to show time in sync with a different
+  n timezone or a server
+- the clock is resized automatically to fit inside the =<div>= element it's
+  supposed to take up
+- style can be changed on the fly
+  
+* Using this library
+This library contains a single constructor, =Clock=. It takes the container
+element (which should be a =<div>=) and an Object with style and time offset
+of the clock. Note that using ~new~ isn't required.
+
+#+BEGIN_SRC js
+  let clock = new Clock(document.getElementById("clock"), {
+    face: {
+      fontFamily: "\"DejaVu Sans Mono\", monospace",
+      fontColor: "#DDD",
+      color: "#333",
+    },
+  });
+#+END_SRC
+
+The description Object can have following properties, which can be omitted:
+- ~timeOffset~ :: A Number with offset for time used by the clock in
+                  milliseconds. Positive numbers are for offsets into the
+                  future and negative for past. Defaults to ~0~ — no offset.
+- ~face~ :: Object describing the face of the clock, which can have following
+            properties:
+  - ~color~ :: String with the color of the face background.
+  - ~fontWeight~ :: Weight of the font to use for numbers.
+  - ~fontFamily~ :: Family of the font to use for numbers. Multiple fonts
+                    separated with commas can be listed as fallbacks.
+  - ~fontColor~ :: Color of the font to use for numbers.
+  - ~fontSize~ :: A size string with size of numbers.
+  - ~fontPosition~ :: A size string with the position of the numbers from the
+                      center of the clock.
+  - ~numbers~ :: Array of Numbers which should be displayed, each should be in
+                 range from ~1~ to ~12~.
+  - ~backgroundImage~ :: An =<img>= element that should be used as the
+       background image.
+  - ~backgroundImageSize~ :: A size string with size of the logo.
+- ~cap~ :: Object describing the cap of the clock, which can have following
+           properties:
+  - ~size~ :: A size string with the size of the cap.
+  - ~color~ :: String with the color of the cap.
+- ~hands~ :: Object with descriptions of clock hands to draw. Individual
+             objects for each hand are named ~hour~, ~minute~ and ~second~,
+             and each of them can have following properties:
+  - ~display~ :: Boolean value telling whether hand should be drawn, defaults
+                 to ~true~ for all hands.
+  - ~capStyle~ :: String with style of the cap to draw, which can have one of
+                  following values:
+    - ~​"butt"​~
+    - ~​"round"​~
+    - ~​"square"​~
+  - ~color~ :: String with the color of the hand.
+  - ~width~ :: Size string with the width of the hand.
+  - ~length~ :: Size string with length of the hand.
+                
+"Size strings" are Strings which contain a base 10 number followed by one of
+following suffixes:
+- =%= :: Relative size in percent. Recommended for most uses, as it makes
+         everything scale properly when resizing the clock.
+- =px= :: Absolute size in pixels, read as an integer.
+          
+*IMPORTANT:* The container =<div>= element should have both its width and height set
+accordingly.
+
+Constructor returns an Object with following properties and methods:
+- ~destroy~ :: A method that removes the Clock, which should be used to get
+               rid of it.
+- ~style~ :: An Object with style used by the Clock, which can be changed on
+             the fly. Its properties are the same as of the style object
+             passed to the constructor.
+
+Example CSS:
+#+BEGIN_SRC css
+  #clock {
+    margin: 3vh auto;
+    width: 40vw;
+    height: 40vw;
+  }
+#+END_SRC
