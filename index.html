@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <title>simple-clock demo</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+     body {
+       text-align: center;
+       font-family: sans-serif;
+       background-color: #EEE;
+     }
+
+     .clocks {
+       width: 60vw;
+       margin: 0 auto;
+     }
+
+     .clocks > div {
+       float: left;
+       width: 25vw;
+       height: 25vw;
+       margin: 1.25vw;
+       font-size: 2vw;
+     }
+    </style>
+  </head>
+  <body>
+    <h1><code>simple-clock</code> demo</h1>
+    <h2>
+      Keep in mind that this demo wasn't transpiled, so it might not work in
+      older browsers
+    </h2>
+
+    <p>
+      Following clocks are bound to variables <code>clock1</code>,
+      <code>clock2</code>, <code>clock3</code> and <code>clock4</code>. You
+      can experiment with them from your JavaScript console.
+    </p>
+
+    <div class="clocks">
+      <div id="clock1"><code>clock1</code></div>
+      <div id="clock2"><code>clock2</code></div>
+      <div id="clock3"><code>clock3</code></div>
+      <div id="clock4"><code>clock4</code></div>
+    </div>
+
+    <script type="text/javascript" src="clock.js"></script>
+    <script type="text/javascript">
+     let clock1 = Clock(document.getElementById("clock1"), {
+       face: {
+         numbers: [3, 6, 9, 12],
+         fontFamily: "serif",
+         fontWeight: "100",
+       },
+       hands: {
+         hour: {
+           capStyle: "butt",
+         },
+         minute: {
+           capStyle: "butt",
+         },
+         second: {
+           capStyle: "butt",
+           color: "#222",
+         },
+       },
+     });
+
+     let clock2 = Clock(document.getElementById("clock2"), {
+       face: {
+         color: "#000",
+         fontColor: "#0F0",
+         fontFamily: "monospace",
+       },
+       cap: {
+         color: "#333",
+       },
+       hands: {
+         hour: {
+           capStyle: "butt",
+           color: "#333",
+         },
+         minute: {
+           capStyle: "butt",
+           color: "#666",
+         },
+         second: {
+           capStyle: "butt",
+           color: "#F00",
+         },
+       },
+     });
+
+     // This clock is meant to look ugly, I'm sorry
+     let clock3 = Clock(document.getElementById("clock3"), {
+       timeOffset: -83000,
+       face: {
+         numbers: [2, 3, 5, 7, 8, 10, 12],
+         color: "#F0F",
+         fontColor: "#FF0",
+         fontFamily: "'comic sans ms', sans-serif",
+       },
+       cap: {
+         color: "#0FF",
+         size: "3%",
+       },
+       hands: {
+         hour: {
+           capStyle: "round",
+           color: "#FF0",
+         },
+         minute: {
+           capStyle: "round",
+           color: "#F3F",
+         },
+         second: {
+           capStyle: "round",
+           color: "#F33",
+         },
+       },
+     });
+
+     let clock4 = Clock(document.getElementById("clock4"));
+    </script>
+  </body>
+</html>
