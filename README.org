@@ -11,7 +11,7 @@ It provides following features:
 - digits can be omitted from the clock, allowing for logos that would go over
   them otherwise
 - a time offset can be set, for instance to show time in sync with a different
-  n timezone or a server
+  timezone or a server
 - the clock is resized automatically to fit inside the =<div>= element it's
   supposed to take up
 - style can be changed on the fly
