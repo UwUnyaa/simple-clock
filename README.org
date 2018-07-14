@@ -1,5 +1,7 @@
 #+TITLE: =simple-clock= — a stylable JavaScript clock
 
+[[https://dominela10.github.io/simple-clock][Link to a demo.]]
+
 This repository provides a clock library, which was designed with emphasis on
 ease of use and styling.
 
