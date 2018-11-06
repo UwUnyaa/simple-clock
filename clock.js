@@ -270,11 +270,9 @@ ${style.face.fontFamily}`;
 
 
     const destroy = () => {
-      console.log(clocks);
       Object.values(canvases)
         .forEach((canvas) => canvas.remove());
       clocks.splice(clocks.indexOf(internalObj), 1);
-      console.log(clocks);
     };
 
     clocks.push(internalObj);
